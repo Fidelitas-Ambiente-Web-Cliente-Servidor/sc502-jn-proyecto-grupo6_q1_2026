@@ -1,0 +1,8 @@
+services:
+  web:
+    image: php:8.2-apache
+    container_name: sc502_web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/html
