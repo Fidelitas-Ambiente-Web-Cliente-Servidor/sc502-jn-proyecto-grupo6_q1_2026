@@ -1,6 +1,8 @@
 services:
   web:
-    image: php:8.2-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: plataforma_salud_web
     ports:
       - "8080:80"
@@ -22,18 +24,6 @@ services:
       - db_data:/var/lib/mysql
     ports:
       - "3308:3306"
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: plataforma_salud_phpmyadmin
-    depends_on:
-      - db
-    environment:
-      PMA_HOST: db
-      PMA_USER: appuser
-      PMA_PASSWORD: apppass
-    ports:
-      - "8082:80"
 
 volumes:
   db_data:
