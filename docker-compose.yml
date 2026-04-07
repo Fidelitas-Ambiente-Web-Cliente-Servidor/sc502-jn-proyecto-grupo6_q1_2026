@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: appdb
+      MYSQL_DATABASE: plataforma_salud
       MYSQL_USER: appuser
       MYSQL_PASSWORD: apppass
     volumes:
