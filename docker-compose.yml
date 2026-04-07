@@ -1,19 +1,17 @@
 services:
   web:
-    build:
-      context: ./app
-      dockerfile: Dockerfile
-    container_name: php-apache-demo
+    image: php:8.2-apache
+    container_name: plataforma_salud_web
     ports:
       - "8080:80"
     volumes:
-      - ./app:/var/www/html
+      - ./:/var/www/html
     depends_on:
       - db
 
   db:
     image: mysql:8.0
-    container_name: mysql-demo
+    container_name: plataforma_salud_db
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -23,11 +21,11 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     ports:
-      - "3307:3306"
+      - "3308:3306"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin-demo
+    container_name: plataforma_salud_phpmyadmin
     depends_on:
       - db
     environment:
