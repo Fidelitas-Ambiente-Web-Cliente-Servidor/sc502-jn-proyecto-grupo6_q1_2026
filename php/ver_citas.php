@@ -49,6 +49,12 @@ $resultado = mysqli_query($conexion, $sql);
             echo "<p><strong>Fecha:</strong> " . $fila["fecha"] . "</p>";
             echo "<p><strong>Hora:</strong> " . $fila["hora"] . "</p>";
             echo "<p><strong>Estado:</strong> " . $fila["estado"] . "</p>";
+
+            if ($fila["estado"] != "Cancelada") {
+                echo "<a href='cancelar_cita.php?id=" . $fila["id_cita"] . "'>Cancelar</a>";
+                echo "<a href='../reprogramar.php?id=" . $fila["id_cita"] . "'>Reprogramar</a>";
+            }
+
             echo "<hr>";
             echo "</div>";
         }
