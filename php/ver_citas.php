@@ -51,7 +51,7 @@ $resultado = mysqli_query($conexion, $sql);
             echo "<p><strong>Estado:</strong> " . $fila["estado"] . "</p>";
 
             if ($fila["estado"] != "Cancelada") {
-                echo "<a href='cancelar_cita.php?id=" . $fila["id_cita"] . "'>Cancelar</a>";
+                echo "<a href='cancelar_cita.php?id=" . $fila["id_cita"] . "' onclick=\"return confirm('¿Seguro que deseas cancelar esta cita?');\">Cancelar</a>";
                 echo "<a href='../reprogramar.php?id=" . $fila["id_cita"] . "'>Reprogramar</a>";
             }
 
