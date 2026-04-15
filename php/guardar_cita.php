@@ -1,17 +1,31 @@
 <?php
 
-$especialidad = $_POST['especialidad'];
-$fecha = $_POST['fecha'];
-$hora = $_POST['hora'];
+session_start();
 
-$archivo = fopen("../data/citas.txt","a");
+if (!isset($_SESSION["id_usuario"])) {
+    header("Location: ../index.php");
+    exit();
+}
 
-fwrite($archivo,$especialidad.",".$fecha.",".$hora."\n");
+include("conexion.php");
 
-fclose($archivo);
+$id_usuario = $_SESSION["id_usuario"];
+$especialidad = mysqli_real_escape_string($conexion, $_POST["especialidad"]);
+$fecha = mysqli_real_escape_string($conexion, $_POST["fecha"]);
+$hora = mysqli_real_escape_string($conexion, $_POST["hora"]);
+$estado = "Activa";
 
-echo "Cita guardada correctamente";
+$sql = "INSERT INTO citas (id_usuario, especialidad, fecha, hora, estado)
+        VALUES ('$id_usuario', '$especialidad', '$fecha', '$hora', '$estado')";
 
-echo "<br><a href='../dashboard.php'>Volver</a>";
+if (mysqli_query($conexion, $sql)) {
+    echo "<h2>Cita guardada correctamente</h2>";
+    echo "<a href='../dashboard.php'>Volver al dashboard</a><br>";
+    echo "<a href='../citas.php'>Registrar otra cita</a>";
+} else {
+    echo "Error al guardar la cita: " . mysqli_error($conexion);
+}
+
+mysqli_close($conexion);
 
 ?>
