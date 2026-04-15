@@ -30,6 +30,7 @@ if ($_SESSION["rol"] != "paciente") {
     <a href="citas.php">Solicitar Cita</a>
     <a href="php/ver_citas.php">Ver Citas</a>
     <a href="expediente.php">Ver Expediente</a>
+    <a href="documentos.php">Ver Documentos y Resultados</a>
     <a href="php/logout.php">Cerrar sesión</a>
 
 </body>
