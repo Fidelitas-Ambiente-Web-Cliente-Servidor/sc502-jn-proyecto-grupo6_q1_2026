@@ -1,43 +1,151 @@
-body{
-
-font-family: Arial;
-background:#f4f4f4;
-text-align:center;
-
+.contenedor-panel {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-form{
-
-background:white;
-width:300px;
-margin:auto;
-padding:20px;
-border-radius:10px;
-box-shadow:0px 0px 10px gray;
-
+.bienvenida {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-input{
-
-width:90%;
-padding:8px;
-margin:5px;
-
+.tarjetas-resumen {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
 }
 
-button{
-
-background:#2b7cff;
-color:white;
-border:none;
-padding:10px;
-cursor:pointer;
-
+.tarjeta-resumen {
+    background-color: #f4f6f9;
+    border: 1px solid #d9e2ec;
+    border-radius: 10px;
+    padding: 20px;
+    width: 180px;
+    text-align: center;
 }
 
-a{
+.tarjeta-resumen h3 {
+    margin-top: 0;
+    color: #1f4e79;
+}
 
-display:block;
-margin:10px;
+.tarjeta-resumen p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
 
+.bloque-cita {
+    background-color: #f9fafb;
+    border: 1px solid #d9e2ec;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+.acciones-admin {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.boton-panel {
+    display: inline-block;
+    background-color: #2c7be5;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    margin: 8px;
+}
+
+.boton-panel:hover {
+    background-color: #1f5fbf;
+    text-decoration: none;
+} .admin-panel {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px gray;
+    text-align: center;
+}
+
+.admin-info {
+    margin: 5px 0;
+}
+
+.admin-resumen {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.admin-card {
+    width: 200px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 0px 6px lightgray;
+}
+
+.admin-card h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.admin-card p {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    color: #2b7cff;
+}
+
+.admin-citas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.admin-cita {
+    width: 280px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: left;
+    box-shadow: 0px 0px 6px lightgray;
+}
+
+.admin-cita p {
+    margin: 8px 0;
+}
+
+.admin-acciones {
+    margin-top: 25px;
+}
+
+.admin-boton {
+    display: inline-block;
+    background-color: #2b7cff;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+.admin-boton:hover {
+    background-color: #1f5fcc;
 }
