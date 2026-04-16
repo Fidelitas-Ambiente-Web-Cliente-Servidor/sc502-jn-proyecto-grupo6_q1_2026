@@ -32,6 +32,7 @@ $fila_canceladas = mysqli_fetch_assoc($resultado_canceladas);
 $sql_recientes = "SELECT c.id_cita, u.nombre, c.especialidad, c.fecha, c.hora, c.estado
                   FROM citas c
                   INNER JOIN usuarios u ON c.id_usuario = u.id_usuario
+                  WHERE c.estado = 'Activa' OR c.estado = 'Reprogramada'
                   ORDER BY c.fecha, c.hora
                   LIMIT 5";
 
@@ -43,7 +44,7 @@ $resultado_recientes = mysqli_query($conexion, $sql_recientes);
 <head>
     <meta charset="UTF-8">
     <title>Panel Administrador</title>
-    <link rel="stylesheet" href="css/estilos.css?v=4">
+    <link rel="stylesheet" href="css/estilos.css?v=6">
 </head>
 <body>
 
@@ -76,7 +77,7 @@ $resultado_recientes = mysqli_query($conexion, $sql_recientes);
             </div>
         </div>
 
-        <h2>Últimas citas</h2>
+        <h2>Últimas citas activas o reprogramadas</h2>
 
         <div class="admin-citas">
             <?php
@@ -92,20 +93,21 @@ $resultado_recientes = mysqli_query($conexion, $sql_recientes);
                     echo "</div>";
                 }
             } else {
-                echo "<p>No hay citas registradas.</p>";
+                echo "<p>No hay citas activas o reprogramadas en este momento.</p>";
             }
-
-            mysqli_close($conexion);
             ?>
         </div>
 
         <div class="admin-acciones">
             <a class="admin-boton" href="php/ver_citas.php">Ver todas las citas</a>
+            <a class="admin-boton" href="usuarios.php">Ver usuarios registrados</a>
             <a class="admin-boton" href="crear_usuario.php">Crear usuario</a>
             <a class="admin-boton" href="php/logout.php">Cerrar sesión</a>
         </div>
     </div>
 </div>
+
+<?php mysqli_close($conexion); ?>
 
 </body>
 </html>

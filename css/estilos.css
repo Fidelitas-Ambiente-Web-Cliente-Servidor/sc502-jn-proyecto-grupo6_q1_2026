@@ -450,4 +450,27 @@ button:hover {
     .patient-cita-box {
         max-width: 100%;
     }
+
+    .admin-usuarios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.admin-usuario {
+    width: 280px;
+    background: linear-gradient(180deg, #162332, #101820);
+    border: 1px solid rgba(127, 179, 255, 0.14);
+    border-radius: 14px;
+    padding: 18px;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+}
+
+.admin-usuario p {
+    margin: 8px 0;
+    color: #d7e1ea;
+    } 
 }
