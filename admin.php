@@ -30,10 +30,10 @@ $fila_activas = mysqli_fetch_assoc($resultado_activas);
 $fila_canceladas = mysqli_fetch_assoc($resultado_canceladas);
 
 $sql_recientes = "SELECT c.id_cita, u.nombre, c.especialidad, c.fecha, c.hora, c.estado
-                FROM citas c
-                INNER JOIN usuarios u ON c.id_usuario = u.id_usuario
-                ORDER BY c.fecha, c.hora
-                LIMIT 5";
+                  FROM citas c
+                  INNER JOIN usuarios u ON c.id_usuario = u.id_usuario
+                  ORDER BY c.fecha, c.hora
+                  LIMIT 5";
 
 $resultado_recientes = mysqli_query($conexion, $sql_recientes);
 
@@ -43,64 +43,67 @@ $resultado_recientes = mysqli_query($conexion, $sql_recientes);
 <head>
     <meta charset="UTF-8">
     <title>Panel Administrador</title>
-    <link rel="stylesheet" href="css/estilos.css?v=2">
+    <link rel="stylesheet" href="css/estilos.css?v=4">
 </head>
 <body>
 
-<div class="admin-panel">
-    <h1>Panel del Administrador</h1>
+<div class="admin-wrapper">
+    <div class="admin-panel">
+        <h1>Panel del Administrador</h1>
 
-    <p class="admin-info">Bienvenido: <strong><?php echo $_SESSION["nombre"]; ?></strong></p>
-    <p class="admin-info">Rol: <strong><?php echo $_SESSION["rol"]; ?></strong></p>
+        <p class="admin-info">Bienvenido: <strong><?php echo $_SESSION["nombre"]; ?></strong></p>
+        <p class="admin-info">Rol: <strong><?php echo $_SESSION["rol"]; ?></strong></p>
 
-    <div class="admin-resumen">
-        <div class="admin-card">
-            <h3>Usuarios</h3>
-            <p><?php echo $fila_usuarios["total_usuarios"]; ?></p>
+        <div class="admin-resumen">
+            <div class="admin-card">
+                <h3>Usuarios</h3>
+                <p><?php echo $fila_usuarios["total_usuarios"]; ?></p>
+            </div>
+
+            <div class="admin-card">
+                <h3>Citas totales</h3>
+                <p><?php echo $fila_citas["total_citas"]; ?></p>
+            </div>
+
+            <div class="admin-card">
+                <h3>Citas activas</h3>
+                <p><?php echo $fila_activas["total_activas"]; ?></p>
+            </div>
+
+            <div class="admin-card">
+                <h3>Citas canceladas</h3>
+                <p><?php echo $fila_canceladas["total_canceladas"]; ?></p>
+            </div>
         </div>
 
-        <div class="admin-card">
-            <h3>Citas totales</h3>
-            <p><?php echo $fila_citas["total_citas"]; ?></p>
-        </div>
+        <h2>Últimas citas</h2>
 
-        <div class="admin-card">
-            <h3>Citas activas</h3>
-            <p><?php echo $fila_activas["total_activas"]; ?></p>
-        </div>
-
-        <div class="admin-card">
-            <h3>Citas canceladas</h3>
-            <p><?php echo $fila_canceladas["total_canceladas"]; ?></p>
-        </div>
-    </div>
-
-    <h2>Últimas citas</h2>
-
-    <div class="admin-citas">
-        <?php
-        if (mysqli_num_rows($resultado_recientes) > 0) {
-            while ($fila = mysqli_fetch_assoc($resultado_recientes)) {
-                echo "<div class='admin-cita'>";
-                echo "<p><strong>ID:</strong> " . $fila["id_cita"] . "</p>";
-                echo "<p><strong>Paciente:</strong> " . $fila["nombre"] . "</p>";
-                echo "<p><strong>Especialidad:</strong> " . $fila["especialidad"] . "</p>";
-                echo "<p><strong>Fecha:</strong> " . $fila["fecha"] . "</p>";
-                echo "<p><strong>Hora:</strong> " . $fila["hora"] . "</p>";
-                echo "<p><strong>Estado:</strong> " . $fila["estado"] . "</p>";
-                echo "</div>";
+        <div class="admin-citas">
+            <?php
+            if (mysqli_num_rows($resultado_recientes) > 0) {
+                while ($fila = mysqli_fetch_assoc($resultado_recientes)) {
+                    echo "<div class='admin-cita'>";
+                    echo "<p><strong>ID:</strong> " . $fila["id_cita"] . "</p>";
+                    echo "<p><strong>Paciente:</strong> " . $fila["nombre"] . "</p>";
+                    echo "<p><strong>Especialidad:</strong> " . $fila["especialidad"] . "</p>";
+                    echo "<p><strong>Fecha:</strong> " . $fila["fecha"] . "</p>";
+                    echo "<p><strong>Hora:</strong> " . $fila["hora"] . "</p>";
+                    echo "<p><strong>Estado:</strong> " . $fila["estado"] . "</p>";
+                    echo "</div>";
+                }
+            } else {
+                echo "<p>No hay citas registradas.</p>";
             }
-        } else {
-            echo "<p>No hay citas registradas.</p>";
-        }
 
-        mysqli_close($conexion);
-        ?>
-    </div>
+            mysqli_close($conexion);
+            ?>
+        </div>
 
-    <div class="admin-acciones">
-        <a class="admin-boton" href="php/ver_citas.php">Ver todas las citas</a>
-        <a class="admin-boton" href="php/logout.php">Cerrar sesión</a>
+        <div class="admin-acciones">
+            <a class="admin-boton" href="php/ver_citas.php">Ver todas las citas</a>
+            <a class="admin-boton" href="crear_usuario.php">Crear usuario</a>
+            <a class="admin-boton" href="php/logout.php">Cerrar sesión</a>
+        </div>
     </div>
 </div>
 
