@@ -30,38 +30,70 @@ $resultado = mysqli_query($conexion, $sql);
 <head>
     <meta charset="UTF-8">
     <title>Dashboard Paciente</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.css?v=5">
 </head>
 <body>
 
-    <h1>Panel del Paciente</h1>
+<div class="patient-wrapper">
+    <div class="patient-panel">
+        <h1>Panel del Paciente</h1>
 
-    <p>Bienvenido: <?php echo $_SESSION["nombre"]; ?></p>
-    <p>Rol: <?php echo $_SESSION["rol"]; ?></p>
+        <p class="patient-info">Bienvenido: <strong><?php echo $_SESSION["nombre"]; ?></strong></p>
+        <p class="patient-info">Rol: <strong><?php echo $_SESSION["rol"]; ?></strong></p>
 
-    <h2>Recordatorio</h2>
+        <div class="patient-recordatorio">
+            <h2>Recordatorio</h2>
 
-    <?php
-    if (mysqli_num_rows($resultado) > 0) {
-        $fila = mysqli_fetch_assoc($resultado);
+            <?php
+            if (mysqli_num_rows($resultado) > 0) {
+                $fila = mysqli_fetch_assoc($resultado);
 
-        echo "<p><strong>Tu próxima cita es:</strong></p>";
-        echo "<p>Especialidad: " . $fila["especialidad"] . "</p>";
-        echo "<p>Fecha: " . $fila["fecha"] . "</p>";
-        echo "<p>Hora: " . $fila["hora"] . "</p>";
-        echo "<p>Estado: " . $fila["estado"] . "</p>";
-    } else {
-        echo "<p>No tienes citas registradas por el momento.</p>";
-    }
+                echo "<div class='patient-cita-box'>";
+                echo "<p><strong>Tu próxima cita es:</strong></p>";
+                echo "<p><strong>Especialidad:</strong> " . $fila["especialidad"] . "</p>";
+                echo "<p><strong>Fecha:</strong> " . $fila["fecha"] . "</p>";
+                echo "<p><strong>Hora:</strong> " . $fila["hora"] . "</p>";
+                echo "<p><strong>Estado:</strong> " . $fila["estado"] . "</p>";
+                echo "</div>";
+            } else {
+                echo "<div class='patient-cita-box'>";
+                echo "<p>No tienes citas registradas por el momento.</p>";
+                echo "</div>";
+            }
 
-    mysqli_close($conexion);
-    ?>
+            mysqli_close($conexion);
+            ?>
+        </div>
 
-    <a href="citas.php">Solicitar Cita</a>
-    <a href="php/ver_citas.php">Ver Citas</a>
-    <a href="expediente.php">Ver Expediente</a>
-    <a href="documentos.php">Ver Documentos y Resultados</a>
-    <a href="php/logout.php">Cerrar sesión</a>
+        <h2>Acciones rápidas</h2>
+
+        <div class="patient-acciones-grid">
+            <a class="patient-card-link" href="citas.php">
+                <h3>Solicitar cita</h3>
+                <p>Agenda una nueva cita médica en el sistema.</p>
+            </a>
+
+            <a class="patient-card-link" href="php/ver_citas.php">
+                <h3>Ver citas</h3>
+                <p>Consulta, cancela o reprograma tus citas registradas.</p>
+            </a>
+
+            <a class="patient-card-link" href="expediente.php">
+                <h3>Ver expediente</h3>
+                <p>Revisa la información básica de tu expediente médico.</p>
+            </a>
+
+            <a class="patient-card-link" href="documentos.php">
+                <h3>Documentos y resultados</h3>
+                <p>Consulta documentos y resultados disponibles.</p>
+            </a>
+        </div>
+
+        <div class="patient-acciones-finales">
+            <a class="patient-boton" href="php/logout.php">Cerrar sesión</a>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
