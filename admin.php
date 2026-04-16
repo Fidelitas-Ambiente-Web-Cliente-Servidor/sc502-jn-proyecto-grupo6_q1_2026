@@ -30,11 +30,11 @@ $fila_activas = mysqli_fetch_assoc($resultado_activas);
 $fila_canceladas = mysqli_fetch_assoc($resultado_canceladas);
 
 $sql_recientes = "SELECT c.id_cita, u.nombre, c.especialidad, c.fecha, c.hora, c.estado
-                  FROM citas c
-                  INNER JOIN usuarios u ON c.id_usuario = u.id_usuario
-                  WHERE c.estado = 'Activa' OR c.estado = 'Reprogramada'
-                  ORDER BY c.fecha, c.hora
-                  LIMIT 5";
+                FROM citas c
+                INNER JOIN usuarios u ON c.id_usuario = u.id_usuario
+                WHERE c.estado = 'Activa' OR c.estado = 'Reprogramada'
+                ORDER BY c.fecha, c.hora
+                LIMIT 5";
 
 $resultado_recientes = mysqli_query($conexion, $sql_recientes);
 

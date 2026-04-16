@@ -15,9 +15,9 @@ if ($_SESSION["rol"] != "administrador") {
 include("php/conexion.php");
 
 $sql_lista_usuarios = "SELECT u.id_usuario, u.nombre, u.correo, r.nombre_rol
-                       FROM usuarios u
-                       INNER JOIN roles r ON u.id_rol = r.id_rol
-                       ORDER BY u.id_usuario";
+                    FROM usuarios u
+                    INNER JOIN roles r ON u.id_rol = r.id_rol
+                    ORDER BY u.id_usuario";
 
 $resultado_lista_usuarios = mysqli_query($conexion, $sql_lista_usuarios);
 
