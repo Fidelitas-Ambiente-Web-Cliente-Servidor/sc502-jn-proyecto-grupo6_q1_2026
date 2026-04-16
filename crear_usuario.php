@@ -18,13 +18,14 @@ if ($_SESSION["rol"] != "administrador") {
 <head>
     <meta charset="UTF-8">
     <title>Crear Usuario</title>
-    <link rel="stylesheet" href="css/estilos.css?v=4">
+    <link rel="stylesheet" href="css/estilos.css?v=7">
 </head>
 <body>
 
 <div class="admin-wrapper">
     <div class="admin-panel">
         <h1>Crear nuevo usuario</h1>
+        <p class="admin-info">Completa los datos para registrar un nuevo usuario en el sistema.</p>
 
         <form action="php/guardar_usuario.php" method="POST">
             <label for="nombre">Nombre</label>
@@ -45,8 +46,8 @@ if ($_SESSION["rol"] != "administrador") {
             <button type="submit">Guardar usuario</button>
         </form>
 
-        <div class="acciones-admin">
-            <a class="admin-boton" href="admin.php">Volver</a>
+        <div class="admin-acciones">
+            <a class="admin-boton" href="admin.php">Volver al panel</a>
         </div>
     </div>
 </div>

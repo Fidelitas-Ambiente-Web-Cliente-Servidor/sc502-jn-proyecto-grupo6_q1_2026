@@ -425,7 +425,7 @@ button:hover {
     color: #d7e1ea;
 }
 
-/*RESPONSIVE*/
+/*RESPONSIVO*/
 
 @media (max-width: 900px) {
     .login-info,

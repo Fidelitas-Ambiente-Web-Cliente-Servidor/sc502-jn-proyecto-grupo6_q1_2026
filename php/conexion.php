@@ -1,12 +1,28 @@
 <?php
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "plataforma_salud";
 
-$conexion = new mysqli($host, $user, $password, $database);
+$base_datos = "plataforma_salud";
 
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+/*Docker*/
+$servidor = "db";
+$usuario = "appuser";
+$contrasena = "apppass";
+
+$conexion = @mysqli_connect($servidor, $usuario, $contrasena, $base_datos);
+
+
+/*XAMPP*/
+if (!$conexion) {
+    $servidor = "localhost";
+    $usuario = "root";
+    $contrasena = "";
+
+    $conexion = @mysqli_connect($servidor, $usuario, $contrasena, $base_datos);
 }
+
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
+
+mysqli_set_charset($conexion, "utf8mb4");
+
 ?>
