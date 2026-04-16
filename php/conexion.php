@@ -1,16 +1,12 @@
 <?php
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "plataforma_salud";
 
-$servidor = "db";
-$usuario = "appuser";
-$contrasena = "apppass";
-$base_datos = "plataforma_salud";
+$conexion = new mysqli($host, $user, $password, $database);
 
-$conexion = mysqli_connect($servidor, $usuario, $contrasena, $base_datos);
-
-if (!$conexion) {
-    die("Error de conexión: " . mysqli_connect_error());
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
 }
-
-mysqli_set_charset($conexion, "utf8mb4");
-
 ?>
